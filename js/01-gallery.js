@@ -39,13 +39,15 @@ function openModal(sourse) {
 
   instance.show();
 
-  document.addEventListener("keydown", (event) => {
-    console.dir(event.code);
+  function onKeyClick(event) {
+      console.dir(event.code);
     if (event.code === "Escape") {
-      instance.close();
-    }
-  });
-// НЕ ЗНАЮ КАК СНЯТЬ :((((
+      document.removeEventListener("keydown", onKeyClick);
+        instance.close();
+      }
+  }
+  document.addEventListener("keydown", onKeyClick);
+  // НЕ ЗНАЮ КАК СНЯТЬ :((((
   //   document.removeEventListener("keydown", (event) => {
   //     console.dir(event.code);
   //     if (event.code === "Escape") {
