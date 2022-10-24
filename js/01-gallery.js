@@ -28,6 +28,7 @@ const onModalCall = (event) => {
     return;
   }
   openModal(event.target.dataset.source);
+
 };
 
 galeryEl.addEventListener("click", onModalCall);
