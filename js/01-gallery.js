@@ -40,14 +40,37 @@ function openModal(sourse) {
 
   instance.show();
 
+  const basicLightboxDiv = document.querySelector(".basicLightbox");
+
+  function closeHandler() { 
+    instance.close();
+    document.removeEventListener("keydown", onKeyClick);
+    basicLightboxDiv.removeEventListener("click", closeHandler);
+  }
+
   function onKeyClick(event) {
       console.dir(event.code);
     if (event.code === "Escape") {
-      document.removeEventListener("keydown", onKeyClick);
-        instance.close();
+      closeHandler();
       }
   }
+
   document.addEventListener("keydown", onKeyClick);
+  basicLightboxDiv.addEventListener("click", closeHandler);
+}
+
+// console.log(galleryItems);
+
+
+//----------------------------------------
+  // function onKeyClick(event) {
+  //     console.dir(event.code);
+  //   if (event.code === "Escape") {
+  //     document.removeEventListener("keydown", onKeyClick);
+  //       instance.close();
+  //     }
+  // }
+  // document.addEventListener("keydown", onKeyClick);
   // НЕ ЗНАЮ КАК СНЯТЬ :((((
   //   document.removeEventListener("keydown", (event) => {
   //     console.dir(event.code);
@@ -55,6 +78,3 @@ function openModal(sourse) {
   //       instance.close();
   //     }
   //   });
-}
-
-// console.log(galleryItems);
